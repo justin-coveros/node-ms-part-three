@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  taskService:
+    image: task-service:1.0
+    environment:
+      DB_HOST: taskdb
+      DB_PORT: 27017
+    ports:
+      - "8080:8080"
+  taskdb:
+    image: mongo:4.0
+    volumes:
+      - dbdata:/data/db
+volumes:
+  dbdata:
+    external: true
